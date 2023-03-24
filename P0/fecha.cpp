@@ -6,13 +6,13 @@ Fecha::Fecha(int d,int m, int y): dia_(d), mes_(m),anno_(y)
   if(d == 0 || m==0 || y==0){
     time_t tiempo_calendario = time(nullptr);
     tm* tiempo_descompuesto = localtime(&tiempo_calendario);
-    int year_now = tiempo_descompuesto->tm_year + 1900;
-    int month_now = tiempo_descompuesto->tm_mon + 1;
     int day_now = tiempo_descompuesto->tm_mday;
+    int month_now = tiempo_descompuesto->tm_mon + 1;
+    int year_now = tiempo_descompuesto->tm_year + 1900;
 
-    if(y==0) anno_=year_now;
-    if(m==0) mes_=month_now;
     if(d==0) dia_=day_now;
+    if(m==0) mes_=month_now;
+    if(y==0) anno_=year_now;
   }
   es_fecha_valida();
 }
@@ -61,7 +61,7 @@ Fecha& Fecha::operator += (int i){
     f.tm_year = anno_ - 1900;
     f.tm_mday += i;
     
-    std::mktime(&f);
+    mktime(&f);
 
     this->dia_ = f.tm_mday;
     this->mes_ = f.tm_mon +1;
@@ -97,8 +97,8 @@ Fecha& Fecha::operator ++(){//
 }
 
 //Operador de postincremento
-Fecha& Fecha::operator ++(int){ //f++
-  Fecha f;
+Fecha Fecha::operator ++(int){ //f++
+   Fecha f;
   f= *this;
   *this += 1;
   return f;
@@ -109,7 +109,7 @@ Fecha& Fecha::operator --(){
   return *this;
 }
 
-Fecha& Fecha::operator --(int){ //f++
+Fecha Fecha::operator --(int){ //f++
   Fecha f;
   f= *this;
   *this += -1;
@@ -121,14 +121,14 @@ Fecha& Fecha::operator --(int){ //f++
 Fecha::operator const char *() const
 {
     setlocale(LC_ALL,"es_ES.UTF-8"); //establece el locale español
-    struct tm f{};
-    f.tm_year= anno_ - 1900;
-    f.tm_mon= mes_ - 1;
-    f.tm_mday= dia_;
+    struct tm f = {};
+    f.tm_mday = dia_;
+    f.tm_mon = mes_ - 1;
+    f.tm_year = anno_ - 1900;
 
     mktime(&f);
 
-    static char aux[80];
+    static char * aux = new char [80];
     strftime(aux,80,"%A %e de %B de %Y",&f );
     return aux;
 }

@@ -24,9 +24,9 @@ class Fecha{
     Fecha operator +(int i)const;
     Fecha operator -(int i)const;
     Fecha& operator ++();
-    Fecha& operator ++(int);
+    Fecha operator ++(int);
     Fecha& operator --();
-    Fecha& operator --(int);
+    Fecha operator --(int);
     operator const char *()const; /* Conversión de Cadena a const char */
     
     class Invalida {
