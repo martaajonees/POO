@@ -3,7 +3,7 @@
 
 #include<stdexcept>
 #include<iostream>
-#include<string.h>
+#include<cstring>
 using namespace std;
 
 class Cadena{
@@ -12,18 +12,9 @@ class Cadena{
         Cadena(const Cadena& cad);
         Cadena(const char* c);
         Cadena& operator =(const Cadena& cad);
-        int length() const; //Se trata de una función constante, ya que no modifica el estado interno de la clase
+        size_t length() const noexcept;
         /* Operadores -----------------------------------------------------------*/
         Cadena& operator += (const Cadena&);
-        const Cadena operator+ (const Cadena&) const;
-        /* Operadores Lógicos ----------------------------------------------------------*/
-        friend bool operator == (const Cadena& cad1, const Cadena& cad2);
-        //friend bool operator == (const char * cad, const Cadena&);
-        friend bool operator != (const Cadena& cad1, const Cadena& cad2);
-        friend bool operator > (const Cadena& cad1, const Cadena& cad2);
-        friend bool operator < (const Cadena& cad1, const Cadena& cad2);
-        friend bool operator >= (const Cadena& cad1, const Cadena& cad2);
-        friend bool operator <= (const Cadena& cad1, const Cadena& cad2);
         /* Funciones AT -----------------------------------------------------------------*/
         char& at(size_t indice);
         const char& at(size_t indice) const;
@@ -40,11 +31,47 @@ class Cadena{
         size_t tam_;
 
 };
-/*
-bool operator == (const char * s, const Cadena& cad){
-    return !strcmp(s, cad.s_);
+inline size_t Cadena::length()const noexcept{
+    return tam_;
 }
-*/
+Cadena operator + (const Cadena& cad1, const Cadena& cad2);
+ /* Operadores Lógicos ----------------------------------------------------------*/
+bool operator == (const Cadena& cad1, const Cadena& cad2);
+bool operator != (const Cadena& cad1, const Cadena& cad2);
+bool operator > (const Cadena& cad1, const Cadena& cad2);
+bool operator < (const Cadena& cad1, const Cadena& cad2);
+bool operator >= (const Cadena& cad1, const Cadena& cad2);
+bool operator <= (const Cadena& cad1, const Cadena& cad2);
+
+/* Operadores Lógicos ----------------------------------------------------------*/
+inline bool operator == (const Cadena& cad1, const Cadena& cad2){
+    return !strcmp((const char *)cad1,(const char *) cad2); //Strcmp devuelve 0 si son iguales, para convertirlo en true hay que negarlo
+}
+
+inline bool operator != (const Cadena& cad1, const Cadena& cad2){
+        return strcmp((const char *)cad1,(const char *) cad2);
+}
+
+inline bool operator > (const Cadena& cad1, const Cadena& cad2){
+    return (cad2<cad1);
+}
+
+inline  bool operator < (const Cadena& cad1, const Cadena& cad2){
+    return strcmp((const char *)cad1,(const char *) cad2)< 0;
+}
+
+inline  bool operator >= (const Cadena& cad1, const Cadena& cad2){
+    return !(cad1<cad2);
+}
+
+inline  bool operator <= (const Cadena& cad1, const Cadena& cad2){
+    return !(cad1>cad2); 
+}
+/* Conversión de Cadena a const char ----------------------------------------------------*/
+
+inline Cadena::operator const char *()const{
+    return s_;
+}
 
    
 #endif

@@ -42,67 +42,32 @@ Cadena::Cadena(const char* cad)
     tam_ = strlen(cad);
     s_ = new char[tam_+1];
     strcpy(s_,cad);
-    s_[tam_] = '\0';
 }
 
-
-/* Conversión de Cadena a const char ----------------------------------------------------*/
-
-Cadena::operator const char *()const{
-    return s_;
-}
-
-
-
-/* Observadores ---------------------------------------------------------------------*/
-/* La función observadora length devolverá el número de caracteres de una Cadena.*/
-int Cadena::length() const{
-    return tam_; //Debe retornar el tamaño de la cadena, que ya está almacenado en el atributo tam_
-}
 
 /* Operadores ------------------------------------------------------------------------ */
 
 Cadena& Cadena::operator +=(const Cadena& cad)
 {
     char* cat = new char[tam_ + cad.tam_ + 1];
-    strncpy(cat, s_, tam_ + 1); // Copia s_ a cat
-    strncat(cat, cad.s_, cad.tam_ + 1); // Concatena cad.s_ a cat
-    delete[] s_; // Libera el espacio de s_
-    s_ = cat; // Asigna el puntero de cat a s_
+
+    strcpy(cat, s_); // Copia s_ a cat
+    strcat(cat, cad.s_); // Concatena cad.s_ a cat
+
     tam_ += cad.tam_; // Actualiza el tamaño
+    delete[] s_; // Libera el espacio de s_
+    s_ = new char[tam_ +1]; // Asigna el puntero de cat a s_
+    strcpy(s_,cat);
+    s_[tam_]= '\0';
+    delete [] cat;
     return *this;
 }
 
-const Cadena Cadena::operator+ (const Cadena& cad)const {
-    Cadena aux(*this);
-    aux += cad;
+Cadena operator + (const Cadena& cad1, const Cadena& cad2) {
+    Cadena aux(cad1);
+    aux += cad2;
     return aux;
 }
-
- /* Operadores Lógicos ----------------------------------------------------------*/
-    bool operator == (const Cadena& cad1, const Cadena& cad2){
-    return !strcmp(cad1.s_, cad2.s_); //Strcmp devuelve 0 si son iguales, para convertirlo en true hay que negarlo
-    }
-
-    bool operator != (const Cadena& cad1, const Cadena& cad2){
-        return strcmp(cad1.s_, cad2.s_);
-    }
-
-    bool operator > (const Cadena& cad1, const Cadena& cad2){
-        return(strcmp(cad1.s_, cad2.s_)> 0);
-    }
-
-    bool operator < (const Cadena& cad1, const Cadena& cad2){
-        return(strcmp(cad1.s_, cad2.s_)< 0);
-    }
-
-    bool operator >= (const Cadena& cad1, const Cadena& cad2){
-        return(strcmp(cad1.s_, cad2.s_))>=0;
-    }
-
-    bool operator <= (const Cadena& cad1, const Cadena& cad2){
-        return(strcmp(cad1.s_, cad2.s_))<=0;
-    }
         
 
 

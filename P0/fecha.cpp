@@ -1,10 +1,5 @@
 #include "fecha.hpp"
 
-#include<iomanip>
-#include<locale>
-#include <cstdio>
-using namespace std;
-
 /* Fecha con tres parámetros: el día, el mes y el año */
 Fecha::Fecha(int d,int m, int y): dia_(d), mes_(m),anno_(y)
 { 
@@ -83,93 +78,59 @@ Fecha& Fecha::operator -= (int i){
 
 Fecha Fecha::operator +(int i)const{ //deben ser declaradas como const 
 //ya que no modifican el objeto Fecha original
-  Fecha f(*this); //Creamos copia del objeto
+  Fecha f;
+  f = *this; //Creamos copia del objeto
   f += i;
   return f;
 }
 
 Fecha Fecha::operator -(int i)const{
-  Fecha f(*this);
+  Fecha f;
+  f = *this; //Creamos copia del objeto
   f += -i;
   return f;
 }
 
 Fecha& Fecha::operator ++(){//
   *this += 1;
-  es_fecha_valida();
   return *this;
 }
 
 //Operador de postincremento
 Fecha& Fecha::operator ++(int){ //f++
-  Fecha f(*this);
-  ++*this;
+  Fecha f;
+  f= *this;
+  *this += 1;
   return f;
 }
 
 Fecha& Fecha::operator --(){
   *this += -1;
-  es_fecha_valida();
   return *this;
 }
 
 Fecha& Fecha::operator --(int){ //f++
-  Fecha f(*this);
-  --*this;
+  Fecha f;
+  f= *this;
+  *this += -1;
   return f;
-}
-/*
-Fecha& Fecha::operator=(const Fecha& f) {
-    if (this != &f) {
-        dia_ = f.dia_;
-        mes_ = f.mes_;
-        anno_ = f.anno_;
-    }
-    es_fecha_valida();
-    return *this;
-}
-*/
-
-bool Fecha::operator != (const Fecha& f)const{
-    return !(dia_== f.dia_ && mes_ == f.mes_ && anno_ == f.anno_);
-}
-
-bool Fecha::operator == (const Fecha& f) const{
-  return (dia_ == f.dia() && mes_ == f.mes() && anno_ == f.anno());
-}
-
-bool Fecha::operator > (const Fecha& f) const{
-  return (anno_ > f.anno() || ((anno_ == f.anno()) && mes_ > f.mes()) || ((anno_ == f.anno()) && (mes_ == f.mes_) && (dia_ > f.dia())));
-}
-
-bool Fecha::operator < (const Fecha& f) const{
-  return (anno_ < f.anno() || ((anno_ == f.anno()) && mes_ < f.mes()) || ((anno_ == f.anno()) && (mes_ == f.mes_) && (dia_ < f.dia())));
 }
 
 
 /* Conversión de Cadena a const char ----------------------------------------------------*/
 Fecha::operator const char *() const
 {
-    std::locale::global(std::locale("es_ES.UTF-8")); //establece el locale español
-    struct tm f = {};
+    setlocale(LC_ALL,"es_ES.UTF-8"); //establece el locale español
+    struct tm f{};
     f.tm_year= anno_ - 1900;
     f.tm_mon= mes_ - 1;
     f.tm_mday= dia_;
+
     mktime(&f);
-    static char *aux= new char[80];
-    strftime(aux,100,"%A %e de %B de %Y",&f );
+
+    static char aux[80];
+    strftime(aux,80,"%A %e de %B de %Y",&f );
     return aux;
 }
 
 
-
-/* Observadores -------------------------------------------------------------------------------------------------- */
-  size_t Fecha::dia() const{
-    return dia_;
-  }
-  size_t Fecha::mes() const{
-    return mes_;
-  }
-  size_t Fecha::anno() const{
-    return anno_;
-  }
