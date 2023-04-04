@@ -14,14 +14,14 @@ class Cadena{
         typedef const char* const_iterator;
         typedef std::reverse_iterator<iterator> reverse_iterator; 
         typedef std::reverse_iterator <const_iterator> const_reverse_iterator;
-        iterator begin()const;
-        iterator end()const;
+        iterator begin() const;
+        iterator end() const;
         const_iterator cbegin() const;
         const_iterator cend()const;
-        reverse_iterator rbegin() const noexcept;
-        reverse_iterator rend() const noexcept;
-        const_reverse_iterator crbegin() const noexcept;
-        const_reverse_iterator crend() const noexcept;
+        reverse_iterator rbegin() const;
+        reverse_iterator rend() const;
+        const_reverse_iterator crbegin() const;
+        const_reverse_iterator crend() const;
         
 
         explicit Cadena(size_t tam =0, char s= ' ');
@@ -29,6 +29,7 @@ class Cadena{
         Cadena(const char* c);
         Cadena(Cadena&& otra) noexcept;
         Cadena& operator =(const Cadena& cad);
+        Cadena& operator=(const char* c);
         Cadena& operator=(Cadena&& otra) noexcept;
         size_t length() const noexcept;
         
@@ -106,19 +107,21 @@ inline Cadena::operator const char *()const{
 /* ITERATOR */
 inline Cadena::iterator Cadena::begin()const {return s_;}
 inline Cadena::iterator Cadena::end()const {return s_+tam_;}
-inline Cadena::const_iterator Cadena::cbegin() const {return s_;}
-inline Cadena::const_iterator Cadena::cend()const {return s_+tam_;}
-inline Cadena::reverse_iterator Cadena::rbegin() const noexcept {
+
+inline Cadena::const_iterator Cadena::cbegin() const {return begin();}
+inline Cadena::const_iterator Cadena::cend()const {return end();}
+
+inline Cadena::reverse_iterator Cadena::rbegin() const {
     return reverse_iterator(end());
 }
-inline Cadena::reverse_iterator Cadena::rend() const noexcept { 
+inline Cadena::reverse_iterator Cadena::rend() const { 
     return reverse_iterator(begin()); 
 }
-inline Cadena::const_reverse_iterator Cadena::crbegin() const noexcept {
-    return const_reverse_iterator(cend());
+inline Cadena::const_reverse_iterator Cadena::crbegin() const {
+    return const_reverse_iterator(end());
 }
-inline Cadena::const_reverse_iterator Cadena::crend() const noexcept { 
-    return const_reverse_iterator(cbegin()); 
+inline Cadena::const_reverse_iterator Cadena::crend() const { 
+    return const_reverse_iterator(begin()); 
 }
 
    

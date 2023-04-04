@@ -49,6 +49,12 @@ Cadena& Cadena::operator=(Cadena&& otra) noexcept {
     return *this;
 }
 
+Cadena& Cadena::operator=(const char* c) {
+    Cadena aux(c);
+    *this = aux;
+    return *this;
+}
+
 /*A partir de una cadena de caracteres de bajo nivel, permitiéndose las conversiones 
 desde const char* a Cadena.*/
 
