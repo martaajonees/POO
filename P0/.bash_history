@@ -1,3 +1,0 @@
-ls
-make valgrinde
-exit
