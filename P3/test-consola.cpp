@@ -341,6 +341,7 @@ int main()
   Pedido p4(usuario_ped, pedido_art, yessi, dinners_club, "5/4/2010");  
   cout << AZUL "\n---------------------PEDIDOS-----------------------\n"
     NORMAL << p1 << endl << p2 << endl << p3 << endl << p4;
+
 #endif
   cout << VERDE "\nSe reciben más cantidades de los artículos existentes.\n\n"
     NORMAL;

@@ -10,29 +10,28 @@ Pedido::Pedido(Usuario_Pedido& user_pedido, Pedido_Articulo& pedido_articulo, Us
    //EXCEPCIONES:
 
    //Titular no correcto
-    if(user.id() != tarjeta_->titular()->id()) throw Pedido::Impostor(user);
+    if (&user!=tar.titular()) throw Impostor(&user);
 
     //Tarjeta no activa
     if(!tarjeta_->activa()) throw Tarjeta::Desactivada();
-
-    //Fecha del pedido mal
-    //if(Fecha()< fecha_) throw Fecha::Invalida("Fecha no correcta");
     
     //Tarjeta caducada
     if(tarjeta_->caducidad()< fecha_) throw Tarjeta::Caducada(tarjeta_->caducidad());
    
-   //Carrito Vacío
-    if(user.compra().size() == 0) throw Pedido::Vacio(&user);
+    //Carrito Vacío
+    if(user.compra().size()==0) throw Vacio(&user);
+
     //Sin stock
     for(auto it:user.compra()){ //Recorremos carrito
         if(it.first->stock()<it.second){ //Si el stock que se pide es mayor al que hay
             user.vaciar_carro(); //Vaciar carrito
+            
             throw Pedido::SinStock(*it.first); //lanzamos excepción 
         }
     }
 
     //Actualizamos carrito
-    for(auto& i: user.compra()){
+    for(auto i: user.compra()){
         Articulo& art = *i.first;
         unsigned cant = i.second;
 
@@ -41,15 +40,17 @@ Pedido::Pedido(Usuario_Pedido& user_pedido, Pedido_Articulo& pedido_articulo, Us
 
         total_ += art.precio() * cant;
         
-        i.first->stock() -= i.second; //Actualizamos stock
+        art.stock() -= cant; //Actualizamos stock
+
     }
+
 
     //Asociamos pedido y usuario
     user_pedido.asocia(*this,user);
     user_pedido.asocia(user,*this);
     
     user.vaciar_carro();
-    N_pedido ++;
+    ++ N_pedido;
 }
 
 //Método ostream

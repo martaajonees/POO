@@ -44,8 +44,8 @@ class Pedido_Articulo{
     typedef std::map<Articulo*, LineaPedido, OrdenaArticulos> ItemsPedido;
     typedef std::map<Pedido*, LineaPedido, OrdenaPedidos> Pedidos;
     //Métodos de asociación
-    void pedir(Pedido& , Articulo&, double precio, size_t cantidad=1);
-    void pedir(Articulo& , Pedido&, double precio, size_t cantidad=1);
+    void pedir(Pedido& p, Articulo& a, double precio, unsigned cantidad=1);
+    void pedir(Articulo& a, Pedido& p, double precio, unsigned cantidad=1);
     //Métodos observadores
     ItemsPedido detalle(const Pedido& ped) const;
     Pedidos ventas(const Articulo& art) const;

@@ -23,14 +23,14 @@ public:
     //Excepciones
     class Impostor{
         public:
-        Impostor(const Usuario& user): user_(&user){}
-        const Usuario& usuario() const {return *user_;}
+        Impostor(const Usuario *user): user_(user){}
+        const Usuario& usuario() const noexcept {return *user_;}
         private:
         const Usuario* user_;
     };
     class Vacio{
         public:
-        Vacio(Usuario* user):user_(user){}
+        Vacio(const Usuario* user):user_(user){}
         const Usuario& usuario()const {return *user_;}
         private:
         const Usuario* user_;
