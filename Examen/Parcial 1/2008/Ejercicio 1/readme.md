@@ -23,9 +23,9 @@ enumeradas _A_ (adenina), _C_ (citosina), _G_ (guanina) y _T_ (timina), en dicho
    ```memcpy()``` de la biblioteca estándar (recuerde que posee tres parámetros: destino, origen
    y número de bytes). No empleee bucles.
 7. Reescriba el siguiente fragmento de código colocando explícitamente las llamadas a los constructores implicados:
-```C++
-const char∗ const s = "GA";
-ADN a(s), b = a;
-b[0] = C;
-(a + "TTA" + b).mostrar();
-```
+   ```C++
+   const char∗ const s = "GA";
+   ADN a(s), b = a;
+   b[0] = C;
+   (a + "TTA" + b).mostrar();
+   ```
