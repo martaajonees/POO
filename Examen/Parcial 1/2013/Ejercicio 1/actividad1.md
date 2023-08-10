@@ -21,8 +21,9 @@ class Complejo {
 public:
   Complejo(double r = 0., double i = 0.): r(r), i(i){}
   double& real(){return r;}
+  double real() const {return r;}
   double& imag(){return i;}
-  void mostrar(){ cout << "Real " << r << " Imaginario " << i;}
+  double imag()const {return i;}
   friend Complejo operator *(const Complejo& c, const Complejo& c1);
   friend bool operator == (const Complejo& c, const Complejo& c1);
   friend bool operator != (const Complejo& c, const Complejo& c1);
