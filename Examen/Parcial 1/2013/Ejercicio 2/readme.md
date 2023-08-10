@@ -1,13 +1,13 @@
 # Ejercicio 2
 Considere las siguientes declaraciones, independientes de las definiciones asociadas.
 ```C++
-Class A {};
+class A {};
 
-Class B {
+class B {
 public:
-  B(int i, const char* s = “”, int j = 0);
-  B& operator = (const B& b):
-  B& operator = (const A& a):
+  B(int i, const char* s = "", int j = 0);
+  B& operator = (const B& b);
+  B& operator = (const A& a);
 };
 ```
 __Apartado A__ Diga si cada línea del siguiente fragmento de código es o no correcta (con un SI o un NO) y explica en una única frase el
