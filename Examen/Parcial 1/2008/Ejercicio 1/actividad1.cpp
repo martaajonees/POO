@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -9,7 +10,8 @@ class ADN {
     ADN();
     ADN(size_t, Nucleotido*);
     ADN(const char * const);
-    ADN(ADN&);
+    ADN(const ADN&);
+    void mostrar();
     friend ADN operator + (ADN a, ADN b);
     private:
     size_t n_;
@@ -48,9 +50,9 @@ Ejercicio 4:
     nuevo puntero sigue apuntando a la dirección de memoria del otro.
     Lo que podría causar muchos problemas.
 */
-ADN::ADN(ADN& a): n_(a.n_){
+ADN::ADN(const ADN& a): n_(a.n_){
     c_ = new Nucleotido[n_]; //Creo espacio c
-    memcpy(c_, a.c_, n_); //Copio el puntero
+    memcpy(c_, a.c_, n_ * sizeof(Nucleotido)); //Copio el puntero
 }
 
 //Ejercicio 5
