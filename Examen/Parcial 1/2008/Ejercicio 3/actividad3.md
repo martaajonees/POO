@@ -36,11 +36,33 @@ Contesta verdadero (V) o falso (F) a las siguientes afirmaciones. Un acierto sum
     `Verdadero. Se utilizaría el constructor por defecto que crea el compilador.`
 
 7. Al inicializar un objeto se llama al constructor de copia, si existe, y si no, al operador de asignación.
-El único parámetro de un constructor de copia puede ser una referencia const o no const.
-El único parámetro de un constructor de copia se puede pasar por valor, aunque a veces es obligatorio pasarlo por referencia.
-El único parámetro del operador de asignación se puede pasar siempre por valor.
-La declaración de un constructor con dos o más parámetros, todos con un valor por defecto definido, en realidad declara dos constructores: el predeterminado y uno de conversión.
-C++ permite sobrecargar un operador dándole un significado diferente al que por naturaleza le corresponde.
-La sobrecarga externa de un operador para una clase requiere la definición de un operador de conversión.
-No se pueden sobrecargar operadores en la parte privada de una clase.
-Siempre que se defina un constructor para una clase hay que definir al menos un destructor.
+
+   `Falso. la asignación se produce sólo cuando ya se ha creado y existe el objeto.`
+9. El único parámetro de un constructor de copia puede ser una referencia const o no const.
+
+   `Falso. El único parámetro debe ser una referencia const puesto que el objeto recibido por el constructor se va a copiar, no a modificar.`
+10. El único parámetro de un constructor de copia se puede pasar por valor, aunque a veces es obligatorio pasarlo por referencia.
+    
+    `Falso. El parámetro formal del constructor debe ser obligatoriamente una referencia al objeto de la misma
+    clase. Ya que si se pasara por valor daría lugar a una recursión infinita`
+    
+11. El único parámetro del operador de asignación se puede pasar siempre por valor.
+    
+    `Falso. AL igual que en el constructor de copia, siempre se debe pasar el único parámetro por referencia.`
+12. La declaración de un constructor con dos o más parámetros, todos con un valor por defecto definido, en realidad declara dos constructores: el predeterminado y uno de conversión.
+
+    `Falso. La declación de un constructor con mas de un parámetro no declara dos constructores, simplemente es una sobrecarga del constructor`
+13. C++ permite sobrecargar un operador dándole un significado diferente al que por naturaleza le corresponde.
+
+    `Verdadero. La sobrecarga de operadores proporciona al operador más de un significado.`
+14. La sobrecarga externa de un operador para una clase requiere la definición de un operador de conversión.
+
+    `Falso. Para sobrecargar un operador no es necesario del operador de conversión ya que no se trata de convertir a otro tipo, sino de definir cómo se comportará el operador en el contexto de esa clase`
+15. No se pueden sobrecargar operadores en la parte privada de una clase.
+    
+    `Verdadero. Los operadores sobrecargados deben ser una función global o una función miembro no estática. No pueden sobrecargarse en la parte privada. Si se quiere acceder a la parte privada de la clase se deben declarar como friend`
+17. Siempre que se defina un constructor para una clase hay que definir al menos un destructor.
+
+    `Falso. Aunque se defina un constructor puede no ser necesario definir un constructor, se puede utilizar el predeterminado`
+
+
