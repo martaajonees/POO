@@ -15,7 +15,7 @@ private:
 
 __Apartado 1__ Complete la clase Vector con la declaración de los métodos necesarios para que
 las siguientes instrucciones proporcionen los resultados descritos en los comentarios y
-explique por qué se producen los dos errores. 1p
+explique por qué se producen los dos errores.
 - `Vector v1(5, 1.2);` Resultado: v1 = {1.2, 1.2, 1.2, 1.2, 1.2}
 - `Vector v2(4);`  Resultado: v2={0, 0, 0, 0}
 - `Vector v3;` Resultado: error de compilación
