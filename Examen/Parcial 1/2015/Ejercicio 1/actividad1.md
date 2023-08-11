@@ -5,7 +5,7 @@ La clase será de la siguiente forma:
 class Vector{
 public:
   explicit Vector(size_t t, double d = 0.0);
-  Vector(initializer_list<double> t);
+  Vector(const initializer_list<double>& t);
 private:
   size_t n;
   double* datos;
@@ -24,7 +24,7 @@ Vector::Vector(size_t t, double d): n(t), datos(new double[n]){
     }
 }
 
-Vector::Vector(initializer_list<double> t): n(t.size()), datos(new double[n]){
+Vector::Vector(const initializer_list<double>& t): n(t.size()), datos(new double[n]){
     copy(t.begin(), t.end(), datos);
 }
 ```
@@ -37,3 +37,13 @@ Vector::~Vector(){
     delete[] datos; //Libera espacio de memoria
 }
 ```
+## Apartado 4
+Por mismo motivo que en el apartado 3, hay que definirlo.
+```C++
+Vector::Vector(const Vector& v): n(v.n), datos(new double[n]){
+    for(int i = 0; i < n; i++){
+        datos[i] = v.datos[i];
+    }
+}
+```
+
