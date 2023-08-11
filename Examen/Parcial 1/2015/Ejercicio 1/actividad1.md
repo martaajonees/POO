@@ -54,3 +54,22 @@ Vector::Vector(Vector&& v): n(v.n), datos(v.datos){
     v.n = 0;
 }
 ```
+
+## Apartado 6
+```C++
+double& Vector::at(int i){
+    if(i >= n){
+        throw out_of_range("Indice fuera de rango");
+    } else {
+        return datos[i];
+    }
+}
+
+double Vector::at(int i) const{
+    if(i >= n){
+        throw out_of_range("Indice fuera de rango");
+    } else {
+        return datos[i];
+    }
+}
+```
