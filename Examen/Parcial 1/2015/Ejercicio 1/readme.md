@@ -24,8 +24,7 @@ explique por qué se producen los dos errores.
 
 __Apartado 2__ Defina los métodos declarados en el apartado anterior.
 
-__Apartado 3__  ¿Es Válido el comportamiento del destructor por defecto? En caso afirmativo explique por qué, en caso contrario
-implemente el método.
+__Apartado 3__  ¿Es válido el comportamiento del destructor por defecto? En caso afirmativo explique por qué, en caso contrario implemente el método.
 
 __Apartado 4__ Repita el apartado anterior para el constructor de copia.
 
