@@ -28,4 +28,4 @@ método `fecha::Invalida::por_que()`.
 1. Implementa un constructor de conversión desde cadena de caracteres en el
 formato ”dd/mm/aaaa”, siendo dd y mm el día y el mes, respectivamente,
 expresados con 1 ó 2 dígitos, y aaaa los 4 dígitos del año. Se lanzara una excepción
-`Fecha::Invalida` si la cadena nos e ajusta al formato correcto.
+`Fecha::Invalida` si la cadena no se ajusta al formato correcto.
