@@ -1,22 +1,23 @@
 # Ejercicio 3
 Se dispone de la clase Fecha siguiente:
 ```C++
-class fecha {
+class Fecha {
   public:
   class Invalida { //clase de excepción
     public:
       Invalida (const char*);
-      Const char* por_que() const;
+      const char* por_que() const;
     private:
       const char* razón;
-  };
+    };
+
 explicit Fecha(int d = 0, int m = 0, int a = 0);
 int dia () const noexcept;
 int mes () const noexcept;
 int anno () const noexcept;
 // ...
 private:
-int dia_, mes_ anio_;
+int dia_, mes_, anio_;
 };
 ```
 El constructor inicializa una Fecha tomando os parámetros en el orden día, mes,
