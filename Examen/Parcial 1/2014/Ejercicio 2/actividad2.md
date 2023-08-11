@@ -1,4 +1,4 @@
-# Ejercicio 1
+# Ejercicio 2
 
 1. `A a1, a2;` SI. Utiliza el constructor por defecto clase A.
 2. `B b1 = 0;` SI. Utiliza el constructor de conversion de int a clase B y utiliza el operador de asignación.
