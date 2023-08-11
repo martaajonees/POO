@@ -46,4 +46,11 @@ Vector::Vector(const Vector& v): n(v.n), datos(new double[n]){
     }
 }
 ```
-
+## Apartado 5
+Por mismo motivo que en el apartado 3, hay que definirlo.
+```C++
+Vector::Vector(Vector&& v): n(v.n), datos(v.datos){
+    v.datos = nullptr; //Una vez movido se invoca al destructor de v
+    v.n = 0;
+}
+```
