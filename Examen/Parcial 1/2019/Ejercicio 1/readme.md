@@ -1,6 +1,6 @@
 # Ejercicio 1
 Los racionales se guardarán siempre de manera canónica, no esta
-permitido denominador 0 y el racional cero será almacenado como:
+permitido denominador 0 y el racional cero será almacenado como _0/1_.
 ```C++
 class racional {
 public:
