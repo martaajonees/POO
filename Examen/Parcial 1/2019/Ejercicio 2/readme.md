@@ -1,3 +1,4 @@
+# Ejercicio 2
 Defina una clase de nombre doble con un único atributo, privado y no
 estático, de tipo `double` para que el siguiente programa se compile y
 ejecute sin errores. 
