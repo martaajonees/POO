@@ -30,6 +30,7 @@ Racional::Racional(int num, int den): n(num), d(den){
 - __Funcion inverso__: Devuelve el inverso del número racional (intercambia el numerador y el denominador).
   ```C++
   inline Racional Racional::inverso(){
+    if(n == 0) throw logic_error("El inverso no está disponible");
     return Racional(d, n);
   }
   ```
@@ -49,6 +50,7 @@ Racional::Racional(int num, int den): n(num), d(den){
   * __Cociente__: Divide dos números racionales.
     ```C++
     inline Racional Racional::operator /(const Racional& r){
+      if(r.n == 0) throw logic_error("División por 0 no permitida");
     return Racional(n * r.d, d * r.n);
     }
     ```
