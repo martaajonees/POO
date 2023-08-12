@@ -13,16 +13,16 @@ private:
 ## Apartado A
 Nombre los métodos necesarios para que las siguientes instrucciones muestren las salidas correspondientes.
    
-1. `racional r(0,1)` //0
-2. `racional s` //0
-3. `racional t{4,-8}` //  -1/2
-4. `racional u(3)` //  3/1
-5. `racional v=5` //  5/1
+1. `racional r(0,1)` Salida: 0/1
+2. `racional s` Salida: 0/1
+3. `racional t{4,-8}` Salida: -1/2
+4. `racional u(3)` Salida: 3/1
+5. `racional v=5` Salida: 5/1
 6. `racional w=v`
 7. `racional x{w}`
 8. `r=t`
-9. `s=racional{9,6}` //  3/2
-10. `v=-4 `//  -4/1
+9. `s=racional{9,6}` Salida: 3/2
+10. `v=-4 `Salida: -4/1
 
 ## Apartado B
 Defina los mínimos miembros imprescindibles para que compilen y
