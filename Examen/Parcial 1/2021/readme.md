@@ -19,7 +19,7 @@ columna _c_ de la matriz. Las ternas se almacenan en orden creciente de filas y 
 ```
 
 La clase `MatrizDispersa` deberá proporcionar métodos públicos para realizar al menos las siguientes operaciones:
-* Crear una matriz nula de dimensiones dadas, por omisión 1 x .1 No es permitirán conversiones implícitas.
+* Crear una matriz nula de dimensiones dadas, por omisión 1 x 1. No se permitirán conversiones implícitas.
 * `asignar ()`: asignar un nuevo valor en una posición dada de la matriz.
 * `valor ()`: leer el valor de una posición dada.
 * `filas()` , `columnas()` y `n_valores ()` : obtener las dimensiones de la matriz y el número de valores distintos de 0, respectivamente.
@@ -35,13 +35,13 @@ la especificación anterior.
 ```C++
 class MatrizDispersa { 
 public:
-private
+private:
   struct terna {
     size_t f, c;
     double v;
   };
-size.t m, n;
-std::vector<terna> val;
+    size_t m, n;
+    std::vector<terna> val;
 };
 ```
 ## Apartado 2
