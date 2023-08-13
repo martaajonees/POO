@@ -45,7 +45,7 @@ bool MatrizDispersa::terna::operator <(terna& t){
     return (t.f < f)|| ((t.f == f) && (t.c < c));
 }
 ```
-Con esto programado, la operación `buscar()` de la siguiente manera:
+Con esto programado, la operación `buscar()` será de la siguiente manera:
 ```C++
 bool MatrizDispersa::buscar(size_t fila, size_t colum, int& indice){
     bool enc = false;
