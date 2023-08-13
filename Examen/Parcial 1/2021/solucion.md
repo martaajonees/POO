@@ -74,3 +74,48 @@ bool MatrizDispersa::buscar(size_t fila, size_t colum, int& indice){
     return enc;
 }
 ```
+## Apartado 3
+```C++
+void MatrizDispersa::asignar(size_t fila, size_t colum, double valor){
+    if(fila >= m || colum >= n){
+        throw out_of_range("la fila y la columna está fuera del rango");
+    } 
+    bool enc = false;
+    terna t;
+    t.f = fila;
+    t.c = colum;
+    t.v = valor;
+    for(auto it = val.begin(); it != val.end() && !enc; it++){
+        if(*it < t){ //Orden creciente
+            val.insert(it, t); //Inserto en el inicio
+            enc = true;
+        }
+    }
+        
+    if(!enc){ //Si no lo he encontrado, inserto al final
+        val.insert(val.end(), t); 
+    }
+}
+
+
+double MatrizDispersa::valor(size_t fila, size_t colum) const {
+    if(fila >= m || colum >= n){
+        throw out_of_range("la fila y la columna está fuera del rango");
+    }
+    bool enc = false;
+    double res = 0; //Si no lo encuentra devuelve 0 
+    for(int i = 0; i < val.size() && !enc; i++){
+        if(val[i].f == fila && val[i].c == colum){
+            enc = true;
+            res = val[i].v;
+        }
+    }
+    return res;
+}
+
+size_t MatrizDispersa::filas() const { return n; }
+
+size_t MatrizDispersa::columnas() const { return m; }
+
+int MatrizDispersa::n_valores() const { return val.size(); }
+```
