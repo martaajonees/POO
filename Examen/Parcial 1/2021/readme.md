@@ -51,7 +51,8 @@ A continuación, utiliza este operador para implementar el método privado `busc
 ## Apartado 3
 Define en el exterior de la clase `MatrizDispersa` los métodos públicos declarados anteriormente, siguiendo estas pautas:
 * En las funciones que lo requieran se deberá validar que las coordenadas están dentro del rango de las dimensiones de al matriz y lanzar una excepción estándar de tipo `out_of_range` si no es así
-* Utiliza los métodos `insert` y `erase` de la clase `vector`. El primero recibe dos parámetros, una posición dada por un iterador y el elemento a insertar. El segundo sólo recibe un iterador que indica la posición del elemento a suprimir
+* Utiliza los métodos `insert` y `erase` de la clase `vector`. El primero recibe dos parámetros, una posición dada por un iterador y el elemento a insertar. El segundo sólo recibe un iterador que indica la posición del elemento a suprimir.
+
   Ejemplos:
   ```C++
   vector<int> v{1, 3, 5, 7, 9};
@@ -61,7 +62,7 @@ Define en el exterior de la clase `MatrizDispersa` los métodos públicos declar
   v.insert(v.begin(), 2);    // v = {2, 3, 5};
   v.insert (v.begin() +2, 4); // v = {2, 3, 4, 5};
   ```
-* Todo el código sedebe escribir tan claro y conciso como sea posible, evitando el uso innecesario de variables, asignaciones u otras instrucciones.
+* Todo el código se debe escribir tan claro y conciso como sea posible, evitando el uso innecesario de variables, asignaciones u otras instrucciones.
 
 ## Apartado 4
 Incorpora a `MatrizDispersa` un método para construir una matriz a partir de una listade inicializadores de tipo 
