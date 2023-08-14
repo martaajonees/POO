@@ -74,13 +74,17 @@ MatrizDispersa A{{0, 1 , 7.5}, {2, 0, 18.2}, {2, 2, 86.37},
 {3, 3, 10.25}, {4, 2, 61.05}, {4, 3, 0.0}};
 ```
 ## Apartado 5
-Escribe un fragmento de código en el que es intente crear al matriz dispersa A y seguidamente actualizar el valor A(8,6) a 0. Se deben capturar las posibles excepciones lanzadas e imprimir un mensaje explicativo por el flujo de salida estandar de error.
+Escribe un fragmento de código en el que es intente crear al matriz dispersa A y seguidamente actualizar el valor A(8,6) a 0. 
+
+Se deben capturar las posibles excepciones lanzadas e imprimir un mensaje explicativo por el flujo de salida estandar de error.
 
 ## Apartado 6
 Implementa el destructor de la clase MatrizDispersa, salvo que pienses que no es necesario, en cuyo caso explica la causa.
 
 ## Apartado 7
-Implementa una eficiente función no miembro para intercambiar dos matrices dispersas evitando las copias de objetos. Añade a la clase MatrizDispersa cualquier método que consideres necesario y no esté definido.
+Implementa una eficiente función no miembro para intercambiar dos matrices dispersas evitando las copias de objetos. 
+
+Añade a la clase `MatrizDispersa` cualquier método que consideres necesario y no esté definido.
 
 ## Apartado 8
 Escribe al declaración de una sobrecarga del método valor que permita tanto leer como actualizar el valor de una posición dada de la matriz. Explica si podría causar algún problema incluir este metodo en al clase MatrizDispersa y, en tal caso, pon un ejemplo.
