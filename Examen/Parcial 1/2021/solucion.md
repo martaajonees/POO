@@ -169,3 +169,7 @@ int main() {
 }
 
 ```
+## Apartado 6
+No hace falta definir un destructor para la clase `MatrizDispersa` ya que no se utiliza memoria dinámica ni recursos externos. En nuestro caso, el `std::vector` se encarga de liberar la memoria ocupada automáticamente sin necesidad de definirlo.
+
+## Apartado 7
