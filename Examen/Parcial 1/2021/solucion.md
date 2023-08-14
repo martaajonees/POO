@@ -77,7 +77,7 @@ bool MatrizDispersa::buscar(size_t fila, size_t colum, int& indice){
 ## Apartado 3
 ```C++
 void MatrizDispersa::asignar(size_t fila, size_t colum, double valor){
-    if(fila >= m || colum >= n){
+    if(fila > m || colum > n){
         throw out_of_range("la fila y la columna está fuera del rango");
     } 
     bool enc = false;
@@ -99,7 +99,7 @@ void MatrizDispersa::asignar(size_t fila, size_t colum, double valor){
 
 
 double MatrizDispersa::valor(size_t fila, size_t colum) const {
-    if(fila >= m || colum >= n){
+    if(fila > m || colum > n){
         throw out_of_range("la fila y la columna está fuera del rango");
     }
     bool enc = false;
@@ -113,9 +113,9 @@ double MatrizDispersa::valor(size_t fila, size_t colum) const {
     return res;
 }
 
-size_t MatrizDispersa::filas() const { return n; }
+size_t MatrizDispersa::filas() const { return m; }
 
-size_t MatrizDispersa::columnas() const { return m; }
+size_t MatrizDispersa::columnas() const { return n; }
 
 int MatrizDispersa::n_valores() const { return val.size(); }
 ```
@@ -144,15 +144,15 @@ private:
 };
 
 MatrizDispersa::MatrizDispersa(initializer_list<terna> l){
-    terna t = *(l.end()); //Último elemento es el que dice las dimensiones del vector
-    n = t.f;
-    m = t.c;
+    vector<terna> aux(l);
+    terna last = aux.back();
+    m = last.f;
+    n = last.c;
     //Recorremos la lista y vamos insertando si son distintas de 0
-    for(auto t: l){
-        if(t.v != 0.0){
-            asignar(t.f, t.c, t.v);
+    for(const auto& elem: aux){
+        if(elem.v != 0.0){
+            asignar(elem.f, elem.c, elem.v);
         }
     }
-
 }
 ```
