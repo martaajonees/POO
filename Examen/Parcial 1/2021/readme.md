@@ -87,5 +87,7 @@ Implementa una eficiente función no miembro para intercambiar dos matrices disp
 Añade a la clase `MatrizDispersa` cualquier método que consideres necesario y no esté definido.
 
 ## Apartado 8
-Escribe al declaración de una sobrecarga del método valor que permita tanto leer como actualizar el valor de una posición dada de la matriz. Explica si podría causar algún problema incluir este metodo en al clase MatrizDispersa y, en tal caso, pon un ejemplo.
+Escribe al declaración de una sobrecarga del método `valor` que permita tanto leer como actualizar el valor de una posición dada de la matriz. 
+
+Explica si podría causar algún problema incluir este metodo en al clase `MatrizDispersa` y, en tal caso, pon un ejemplo.
 
