@@ -65,13 +65,13 @@ Define en el exterior de la clase `MatrizDispersa` los métodos públicos declar
 * Todo el código se debe escribir tan claro y conciso como sea posible, evitando el uso innecesario de variables, asignaciones u otras instrucciones.
 
 ## Apartado 4
-Incorpora a `MatrizDispersa` un método para construir una matriz a partir de una listade inicializadores de tipo 
+Incorpora a `MatrizDispersa` un método para construir una matriz a partir de una lista de inicializadores de tipo 
 `terna` dados en cualquier orden, la cual incluirá al final el elemento de la fila y
 columna ultimas,tenga el valor 0 o no. Las dimensiones de la matriz se deducirán de esta última terna de la lista, que no se almacenará si su valor es 0. Trata de reutilizar la operación `asignar`. 
 Por ejemplo, al matriz del ejemplo inicial es podrá construir como sigue:
 ```C++
-MatrizDispersa A{(0, ,1 7.5), {2, 0, 18.2), (2, 2, 86.37}
-(3, 3, 10.25}, {4, 2, 61.05}, {4, 3, 0.0} };
+MatrizDispersa A{(0, ,1 7.5), (2, 0, 18.2), (2, 2, 86.37)
+(3, 3, 10.25), (4, 2, 61.05), (4, 3, 0.0) };
 ```
 ## Apartado 5
 Escribe un fragmento de código en el que es intente crear al matriz dispersa A y seguidamente actualizar el valor A(8,6) a O. Se deben capturar las posibles excepciones lanzadas e imprimir un mensale explicativo por el llujo de salida estandar de error.
