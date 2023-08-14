@@ -86,13 +86,13 @@ void MatrizDispersa::asignar(size_t fila, size_t colum, double valor){
     t.c = colum;
     t.v = valor;
     for(auto it = val.begin(); it != val.end() && !enc; it++){
-        if(*it < t){ //Orden creciente
+        if(*it < t && t.v != 0){ //Orden creciente
             val.insert(it, t); //Inserto en el inicio
             enc = true;
         }
     }
-        
-    if(!enc){ //Si no lo he encontrado, inserto al final
+    // Si el valor es igual a 0 no lo inserto
+    if(!enc && valor != 0){ //Si no lo he encontrado, inserto al final
         val.insert(val.end(), t); 
     }
 }
@@ -155,4 +155,17 @@ MatrizDispersa::MatrizDispersa(initializer_list<terna> l){
         }
     }
 }
+```
+## Apartado 5
+```C++
+int main() {
+    MatrizDispersa A{{0, 1 , 7.5}, {2, 0, 18.2}, {2, 2, 86.37}, {3, 3, 10.25}, {4, 2, 61.05}, {4, 3, 0.0}};
+    try {
+        A.asignar(8, 6, 0.0);
+    } catch(const out_of_range& e){
+        cerr << "Error: " << e.what() << ". No se pudo actualizar el valor";
+    }
+    return 0;
+}
+
 ```
