@@ -126,7 +126,6 @@ class MatrizDispersa {
 public:  
     MatrizDispersa(initializer_list<terna>);
     explicit MatrizDispersa(size_t m = 1, size_t n = 1): m(m), n(n){}
-    void mostrar() const;
     void asignar(size_t fila, size_t colum, double valor);
     double valor(size_t fila, size_t colum) const;
     size_t filas() const;
@@ -173,3 +172,55 @@ int main() {
 No hace falta definir un destructor para la clase `MatrizDispersa` ya que no se utiliza memoria dinámica ni recursos externos. En nuestro caso, el `std::vector` se encarga de liberar la memoria ocupada automáticamente sin necesidad de definirlo.
 
 ## Apartado 7
+Para hacer un intercambio evitando la copia de objetos, lo hacemos mediante el movimiento de objetos. Para ello declaramos y definimos el constructor de movimiento y el operador de asignación por movimiento de esta manera.
+```C++
+class MatrizDispersa { 
+public:  
+    MatrizDispersa(initializer_list<terna>);
+    explicit MatrizDispersa(size_t m = 1, size_t n = 1): m(m), n(n){}
+    MatrizDispersa(MatrizDispersa&&);
+    MatrizDispersa& operator=(MatrizDispersa && o);
+    void asignar(size_t fila, size_t colum, double valor);
+    double valor(size_t fila, size_t colum) const;
+    size_t filas() const;
+    size_t columnas() const;
+    int n_valores() const;
+private:
+  struct terna {
+    size_t f, c;
+    double v;
+    bool operator <(terna& t1); //Sobrecarga operador <
+  };
+  bool buscar(size_t fila, size_t colum, int& indice);
+    size_t m, n;
+    std::vector<terna> val;
+};
+
+MatrizDispersa::MatrizDispersa(MatrizDispersa&& o): m(o.m), n(o.n), val(o.val){
+    o.m = 0;
+    o.n = 0;
+    o.val.clear();
+}
+
+MatrizDispersa& MatrizDispersa::operator=(MatrizDispersa && o){
+    if(this != &o){ //evitar autoasignación
+        n = o.n;
+        m = o.m;
+        val = o.val;
+        //Dejamos o vacío
+        o.n = 0;
+        o.m = 0;
+        o.val.clear();
+    }
+
+    return *this;
+}
+```
+Tras esto, podemos definir la función externa de intercambio:
+```C++
+void intercambiar(MatrizDispersa& A, MatrizDispersa& B){
+    MatrizDispersa C (std::move(A));
+    A = std::move(B);
+    B = std::move(C);
+}
+```
