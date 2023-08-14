@@ -4,7 +4,7 @@ class MatrizDispersa {
 public:
     explicit MatrizDispersa(size_t m = 1, size_t n = 1);
     void asignar(size_t fila, size_t colum, double valor);
-    double valor() const;
+    double valor(size_t fila, size_t colum) const;
     size_t filas() const;
     size_t columnas() const;
     int n_valores() const;
@@ -26,7 +26,7 @@ public:
     typedef vector<terna>::iterator iterator;   
     explicit MatrizDispersa(size_t m = 1, size_t n = 1);
     void asignar(size_t fila, size_t colum, double valor);
-    double valor() const;
+    double valor(size_t fila, size_t colum) const;
     size_t filas() const;
     size_t columnas() const;
     int n_valores() const;
@@ -118,4 +118,41 @@ size_t MatrizDispersa::filas() const { return n; }
 size_t MatrizDispersa::columnas() const { return m; }
 
 int MatrizDispersa::n_valores() const { return val.size(); }
+```
+## Apartado 4
+La clase quedaría:
+```C++
+class MatrizDispersa { 
+public:  
+    MatrizDispersa(initializer_list<terna>);
+    explicit MatrizDispersa(size_t m = 1, size_t n = 1): m(m), n(n){}
+    void mostrar() const;
+    void asignar(size_t fila, size_t colum, double valor);
+    double valor(size_t fila, size_t colum) const;
+    size_t filas() const;
+    size_t columnas() const;
+    int n_valores() const;
+private:
+  struct terna {
+    size_t f, c;
+    double v;
+    bool operator <(terna& t1); //Sobrecarga operador <
+  };
+  bool buscar(size_t fila, size_t colum, int& indice);
+    size_t m, n;
+    std::vector<terna> val;
+};
+
+MatrizDispersa::MatrizDispersa(initializer_list<terna> l){
+    terna t = *(l.end()); //Último elemento es el que dice las dimensiones del vector
+    n = t.f;
+    m = t.c;
+    //Recorremos la lista y vamos insertando si son distintas de 0
+    for(auto t: l){
+        if(t.v != 0.0){
+            asignar(t.f, t.c, t.v);
+        }
+    }
+
+}
 ```
