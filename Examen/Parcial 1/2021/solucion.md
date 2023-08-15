@@ -224,3 +224,33 @@ void intercambiar(MatrizDispersa& A, MatrizDispersa& B){
     B = std::move(C);
 }
 ```
+
+## Apartado 8
+```C++
+double& MatrizDispersa::valor(size_t fila, size_t colum){
+    if(fila > m || colum > n){
+        throw out_of_range("la fila y la columna está fuera del rango");
+    }
+    int indice;
+    bool enc = buscar(fila, colum, indice);
+    if(enc){
+        return val[indice].v;
+    } else{
+        asignar(fila, colum, 1.0);
+        buscar(fila, colum, indice);
+        return val[indice].v;
+    }
+}
+
+Un inconveniente en esta sobrecarga es que se estaría permitiendo cambiar valores en la matriz dispersa sin un mecanismo claro para manejar la dispersión y mantener la coherencia de los datos.
+
+Por ejemplo, en una matriz 3x3 de la siguiente manera:
+```
+3.0  0.0  0.0
+0.0  2.0  0.0
+0.0  1.0  0.0
+
+```
+Y le asignamos el `valor(1,1) = 0.0` tendríamos un valor 0.0 en nuestro vector `val`y no podríamos
+controlar la propiedad de dispersión de nuestra matriz.
+
