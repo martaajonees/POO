@@ -25,3 +25,9 @@ items:
 1. Se puede definir: `LibroX lib1;`
 2. Se tiene un constructor de conversión de `std::string a LibroX`
 3. Se puede definir: `LibroX lib2[5];`
+4. Se puede definir: `std::vector<LibroX> lib3;`
+5. Siendo "El Quijote" una cadena literal de tipo `const char*`; se produce una conversión implícita a `string` al ejecutar: `LibroX* lib4 = new LibroX("El Quijote");`
+6. Se puede definir: LibroX lib5 = "El Quijote";
+7. Hace falta denir el destructor para LibroX.
+
+
