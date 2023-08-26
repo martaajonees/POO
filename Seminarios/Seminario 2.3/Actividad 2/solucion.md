@@ -35,14 +35,3 @@ int main(){
 }
 ```
 ## Constructor de conversión
-El constructor de movimiento es: 
-```C++
-matriz(matriz&&);
-```
-__Programa de prueba__ :
-```C++
-int main(){
-    matriz m;
-    matriz A = std::move(m);
-}
-```
