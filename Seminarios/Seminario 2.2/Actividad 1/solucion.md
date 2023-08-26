@@ -16,7 +16,7 @@ private:
 
 La asignación en el cuerpo del constructor se usa para modificar los valores de los atributos una vez ya creado el objeto.
 
-la sintaxis es:
+La sintaxis es:
 
 ```C++
   class Ejemplo {
